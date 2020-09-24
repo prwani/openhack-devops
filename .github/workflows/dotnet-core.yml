@@ -36,5 +36,6 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: Deploy to Docker  
       run: |
+        cd web
         docker build . -t openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
         docker push openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
