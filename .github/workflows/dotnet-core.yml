@@ -39,3 +39,8 @@ jobs:
         cd web
         docker build . -t openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
         docker push openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'openhackc7q85ic6poi'
+        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+        images: 'openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} '
