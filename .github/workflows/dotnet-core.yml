@@ -29,3 +29,12 @@ jobs:
       run: |
         cd tests/UnitTests
         dotnet test --no-restore --verbosity normal
+    - name: Deploy to Docker
+    - uses: azure/docker-login@v1      
+      with:
+        login-server: openhackc7q85ic6acr.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
+        docker push openhackc7q85ic6acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
