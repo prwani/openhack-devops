@@ -22,10 +22,10 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: 
+      run: |
         cd web
         dotnet build --configuration Release --no-restore
     - name: Test
-      run: 
+      run: |
         cd tests
         dotnet test --no-restore --verbosity normal
