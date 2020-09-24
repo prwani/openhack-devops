@@ -27,5 +27,5 @@ jobs:
         dotnet build --configuration Release --no-restore
     - name: Test
       run: |
-        cd tests
+        cd tests/UnitTests
         dotnet test --no-restore --verbosity normal
